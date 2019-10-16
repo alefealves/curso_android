@@ -21,13 +21,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //listAdapter.setData(initTodos())
-        val task1 = TodoList(0,"Ir ao Cinema",false)
+        listAdapter.setData(initTodos())
+
+        /*val task1 = TodoList(0,"Ir ao Cinema",false)
         val task2 = TodoList(1,"Ir a Praia",true)
         val task3 = TodoList(2,"Ir ao Shopping",false)
 
         val tasks = mutableListOf(task1, task2, task3)
-        tasks.add(task1)
+        tasks.add(task1)*/
 
         new_task.setOnClickListener {
             val intent = Intent(applicationContext, NewActivity::class.java)
@@ -58,9 +59,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTodos(): MutableList<TodoList>{
-        val task1 = TodoList(0,"Ir ao Cinema",false)
-        val task2 = TodoList(1,"Ir a Praia",true)
-        val task3 = TodoList(2,"Ir ao Shopping",false)
+        val task1 = TodoList(0,"Estudar Android",false)
+        val task2 = TodoList(1,"Estudar Recyclerview",true)
+        val task3 = TodoList(2,"Estudar Kotlin",false)
 
         val tasks = mutableListOf(task1, task2, task3)
         return tasks

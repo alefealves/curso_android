@@ -17,6 +17,10 @@ class TodoListAdapter(private val todolists: MutableList<TodoList>) : RecyclerVi
         notifyDataSetChanged()
     }
 
+    fun setData(todos: List<TodoList>){
+        this.todolists.addAll(todos)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
 
         val inflater = LayoutInflater.from(parent.context)
