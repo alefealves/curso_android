@@ -1,24 +1,24 @@
 package com.example.todolist.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todolist.DetailActivity
 import com.example.todolist.R
 import com.example.todolist.models.TodoList
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class TodoListAdapter(private val todolists: List<TodoList>) : RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
-
-    val todos = mutableListOf<TodoList>()
-
-    fun setData(todos: List<TodoList>){
-        this.todos.addAll(todos)
-    }
+class TodoListAdapter(private val todolists: MutableList<TodoList>) : RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
 
     fun addTodo(todo: TodoList) {
-        this.todos.add(todo)
+        this.todolists.add(todo)
         notifyDataSetChanged()
+    }
+
+    fun setData(todos: List<TodoList>){
+        this.todolists.addAll(todos)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
@@ -44,9 +44,19 @@ class TodoListAdapter(private val todolists: List<TodoList>) : RecyclerView.Adap
     class TodoViewHolder( val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bindData(todoList: TodoList) {
-            view.id_task.text = todoList.id.toString()
+
+            view.setOnClickListener {
+                val intent = Intent(view.context,DetailActivity::class.java)
+                intent.putExtra("todo",todoList)
+                view.context.startActivity(intent)
+            }
+
             view.descricao.text = todoList.descricao
-            view.status.text = todoList.status.toString()
+            view.status.isChecked = todoList.status
+
+            view.status.setOnClickListener {
+                todoList.status = !it.status.isChecked
+            }
         }
     }
 }
