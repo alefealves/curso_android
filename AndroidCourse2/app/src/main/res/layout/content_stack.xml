@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".StackActivity"
+    tools:showIn="@layout/activity_stack">
+
+    <Button
+        android:id="@+id/stack_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Stack Fragment"
+        />
+
+    <Button
+        android:id="@+id/hello_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stack_fragment"
+        android:text="Hello Fragment"
+        />
+
+    <FrameLayout
+        android:id="@+id/stack_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/hello_fragment"
+        />
+
+    <!--<fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.andersonk.androidcourse.fragments.stackFragment"
+        android:tag="stack"
+        />-->
+
+</RelativeLayout>
